@@ -5,6 +5,7 @@ import Category from '@/components/category'
 import ShopCar from '@/components/shopcar'
 import User from '@/components/user'
 import addCart from '@/components/addCart'
+import Test from '@/components/test'
 
 Vue.use(Router);
 
@@ -35,5 +36,10 @@ export default new Router({
       name: 'detail',
       component: addCart
     },
+      {
+          path: '/test',
+          name: 'test',
+          component: Test
+      }
   ]
 })

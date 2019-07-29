@@ -9,7 +9,7 @@
                     </div>
                     <div class="detail">
                         <mt-swipe :auto="4000">
-                            <mt-swipe-item v-for="url in $store.getters.msg.options.img">
+                            <mt-swipe-item v-for="(url,index) in $store.getters.msg.options.img" :key="index">
                                 <img :src="url" alt="">
                             </mt-swipe-item>
                         </mt-swipe>
@@ -65,7 +65,7 @@
             },
             toShopCar(){
                 this.detailMsg = this.$store.getters.msg.options
-                this.$store.commit("toShopCar", this.detailMsg)
+                this.$store.commit(TYPES.SHOP_CAR, this.detailMsg)
                 this.$router.push('/shopCar')
             }
         },

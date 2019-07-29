@@ -3,12 +3,12 @@
         <div class="home">
             <Search></Search>
             <mt-swipe :auto="4000">
-                <mt-swipe-item v-for="banner in bannerList ">
+                <mt-swipe-item v-for="(banner,index) in  aaa? bannerList: bannerList1 " :key="index">
                     <img :src="banner.url" :alt="banner.name">
                 </mt-swipe-item>
             </mt-swipe>
             <ul class="type-list clearfix">
-                <li class="list" v-for="item in typeList">
+                <li class="list" v-for="(item,index) in typeList">
                     <a href="#">
                         <span class="icon" :style="{'background':'url('+item.url+')',backgroundSize:'cover'} "></span>
                         <span class="text">{{item.name}}</span>
@@ -16,13 +16,13 @@
                 </li>
             </ul>
             <div class="goods">
-                <div class="goods-items" v-for="(item,index) in goodsList">
+                <div class="goods-items"  v-for="(item,index) in goodsList" :key="index">
                     <h4>
                         {{item.goods.type}}
                         <span>P{{index+1}}</span>
                     </h4>
                     <ul class="clearfix">
-                        <li v-for="itm in item.goods.list " @click="toDetail(itm)">
+                        <li v-for="(itm,idx) in item.goods.list " :key="idx" @click="toDetail(itm)">
                             <img class="product" :src="itm.img[0]" alt="">
                             <span class="price">¥{{itm.price}}</span>
                             <span class="name">{{itm.name}}</span>
@@ -33,7 +33,7 @@
             </div>
         </div>
         <goods-detail></goods-detail>
-        <addCart :shopMsg="shopMsg"></addCart>
+        <!--<addCart :shopMsg="shopMsg"></addCart>-->
     </div>
 
 </template>
@@ -65,6 +65,14 @@
                     {name: 'banner_4', url: img4},
                     {name: 'banner_5', url: img5},
                 ],
+                bannerList1:[
+                    {name: 'banner_1', url: img1},
+                    {name: 'banner_2', url: img2},
+                    {name: 'banner_3', url: img1},
+                    {name: 'banner_4', url: img2},
+                    {name: 'banner_5', url: img1},
+                ],
+                aaa:true,
                 typeList: [],
                 goodsList: [],
                 shopMsg: {} //点击当前项的数据
@@ -93,7 +101,6 @@
         },
         mounted() {
             this.getDataList();
-           console.log(this)
         }
     }
 </script>

@@ -63,6 +63,14 @@
         },
         mounted() {
             this.getDataList()
+        },
+        watch: {
+            '$route' (val, old) {
+                // 当前路由
+                console.log(val)
+                // 上一个路由
+                console.log(old)
+            }
         }
     }
 </script>

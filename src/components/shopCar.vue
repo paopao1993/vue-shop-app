@@ -126,7 +126,7 @@
                 }
                 MessageBox.confirm(`确认购买共:${this.totalNum}元`).then(res=>{
                     console.log(this.buyList,'buy')
-                    this.$store.commit('hasOrder',this.buyList)
+                    this.$store.commit(TYPES.HAS_ORDER,this.buyList)
                     MessageBox.alert('购买成功');
                     this.$router.push('/user')
                 })

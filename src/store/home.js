@@ -113,7 +113,7 @@ const mutations = {
         val.chooseStatus = false
         shop_num.push(val)
     },
-    toShopCar(state,val){
+    [TYPES.SHOP_CAR](state,val){
         let shop_num=state.shop_num;
         state.isBlock=false
         for(let i=0;i<shop_num.length;i++){
@@ -132,7 +132,7 @@ const mutations = {
         val.chooseStatus=false;
         shop_num.push(val)
     },
-    hasOrder(state,val){
+    [TYPES.HAS_ORDER](state,val){
         console.log(val,'val')
         state.hasBuy.push(val)
         console.log(state.hasBuy)

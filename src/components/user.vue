@@ -16,8 +16,8 @@
                 </div>
             </div>
             <ul class="list" v-if="$store.state.hasBuy.length>0">
-                <li class="list-item"  v-for="(item,index) in list" @click="changeState(index)">
-                    <span >订单{{index+1}}</span>
+                <li class="list-item" v-for="(item,index) in list" @click="changeState(index)">
+                    <span>订单{{index+1}}</span>
                     <span>></span>
                     <ul class="order-detail">
                         <li v-for="itm in item" v-if="order===index">
@@ -33,34 +33,35 @@
 
 <script>
     import * as TYPES from '../store/type'
+
     export default {
         name: "user",
         data() {
             return {
-                list:[],
-                order:null,
+                list: [],
+                order: null,
             }
         },
-        methods:{
-            getList(){
-                this.list=this.$store.state.hasBuy;
+        methods: {
+            getList() {
+                this.list = this.$store.state.hasBuy;
             },
-            changeState(index){
-                if(this.order===index){
-                    this.order=null;
+            changeState(index) {
+                if (this.order === index) {
+                    this.order = null;
                     return
-                }else {
-                    this.order=index
+                } else {
+                    this.order = index
                 }
 
             },
-            goHome(){
+            goHome() {
                 this.$router.push('/')
             },
         },
-        mounted(){
+        mounted() {
             this.getList();
-            console.log(this.list,'list');
+            console.log(this.list, 'list');
             this.$store.commit(TYPES.CLEAR_CAR)
         }
     }
